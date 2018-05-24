@@ -18,7 +18,7 @@ public class MapDemo {
 		map.put(23, "chris");
 		map.put(50, "jose");
 		
-		System.out.println(map);
+		/*System.out.println(map);
 		
 		
 		System.out.println(map.get(35));
@@ -35,8 +35,14 @@ public class MapDemo {
 		
 		Set<Entry<Integer, String>> data = map.entrySet();
 		for (Entry<Integer, String> entry : data) {
+			
 			System.out.println(entry.getKey()+" "+entry.getValue());
-		}
+		}*/
+		
+		
+		System.out.println(map.get(500));
+		map.put(10, "sai");
+		System.out.println(map);
 		
 		
 		
