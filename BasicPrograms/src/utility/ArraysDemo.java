@@ -2,6 +2,7 @@ package utility;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class ArraysDemo {
 	
@@ -29,6 +30,28 @@ public class ArraysDemo {
 		for (Integer integer : numbers) {
 			System.out.println(integer);
 		}
+		
+		
+		
+		List<Integer> list = Arrays.asList(numbers);
+		System.out.println(list);
+		
+		//Arrays.binarySearch(numbers,3);
+		
+		
+		Integer[] i2 = new Integer[10];
+		
+		
+		Arrays.fill(i2, null);
+		for (Integer integer : i2) {
+			System.out.println(integer);
+		}
+		
+		
+		
+		
+		
+		
 		
 		
 		
