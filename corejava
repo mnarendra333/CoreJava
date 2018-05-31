@@ -1,0 +1,1471 @@
+core java
+--------
+oerators
+------
+1)increment/decrement operator
+2)Arithmetic
+3)concatinatin
+4)relational
+5)equality
+6)bitwise
+7)instanceof
+8)typecast
+9)assignment operator
+10)conditional operator
+11)new operator
+12)[] operator
+
+Arithmetic
+----------
+(+,-,*,/,%)
+
+relational
+--------
+>
+<
+>=
+<=
+equality
+-------
+
+==
+
+!=
+bitwise
+-----
+& -- AND   -->if both arguments are true then result is true
+
+|  -- OR     -->if atleast 1 oprend is true ----------is true
+
+^  -- X-OR  -->if both arguments are different -----true
+
+T&T->T
+T|T->T
+T^T->F
+
+
+typecast operators
+--------------
+implicit typecasting
+---------------
+
+byte->short->int->long->float->double
+
+
+explicit typecasting
+--------------
+byte<-short<-int<-long<-float<-double
+
+conditional operator
+----------------
+a=10
+b=20
+byte b=(a<c)?40:50
+
+new
+---
+-creation of objects
+-destruction gc
+
+[]
+--
+declare arrays
+*)static block
+
+Date class
+
+flow controls
+----------
+selection statements
+----------------
+1)if-else
+2)switch
+
+iterative statements
+---------------
+1)while
+2)do-while
+3)for
+4)for-each loop
+
+transfer statements
+---------------
+1)break
+2)continue
+3)return 
+4)try
+5)catch
+6)final
+
+
+
+
+
+switch
+======
+1.4
+---
+byte,short,char,int
+
+1.5
+---
+Byte,Short,Charecter,Integer,Enum
+
+1.7
+---
+String
+
+
+
+
+
+
+1)instance variables
+-------------
+->if the value of a variable is varied from object to object. Such type of 
+variables are called instance variables.
+->For every object a separate copy of instance variables will be created.
+->Instance variables will be crated at the time of object creation and will
+be destroyed at the time of object destruction i.e the scope of instance
+variables is exactly same as the scope of object.
+->We have to declare instance variables with in the class but outside of 
+any method (or) constructor or block.
+->For the instance variables no need to perform initialization.
+JVM will always provide default values.
+Ex:
+class Test
+{
+int i;
+public static void main(String arg[])
+{
+Test t = new Test();
+System.out.println(t.i);
+}
+}
+Instance variables also known as ‘attributes’.
+
+static variable
+-----------
+->if the value of a variable is fixed for all objects then it is not recommended 
+to declare that variable at instance level. Such type of variables we have 
+to declare at class level by using static keyword.
+->For the static variables a single copy will be created at class level and 
+shared by all objects of that class.
+->Static variables should be declared with in the class but outside of any 
+method or block or constructor.
+->Static variables will be created at the time of class loading and 
+destroyed at the time of unloading.
+
+LocalVariables:
+-------------
+->If we are declaring a variable with in a method or constants or block
+such type of variables are called local variables. 
+->Local variables also known as temporary variable or ‘automatic variable’. 
+Local variables will be created as the part of method execution and will be
+destroyed once the method completes.
+->For the local variables JVM won’t provide any default values. Before 
+using a local variable compulsory we should perform initialization 
+explicitly otherwise compile time error.
+Ex:
+class Test
+{
+public static void main(String arg[])
+{
+int i;
+System.out.println(i);
+}
+}
+C.E: variable ‘i’ might not have been initialized.
+class Test
+{
+public static void main(String arg[])
+{
+int i;
+System.out.println("Hello");
+}
+}
+O/P:- Hello
+
+polymorphism
+-----------
+Two methods r said to be overloaded iff the method names are same, 
+But arguments are different in 3 cases
+1)no of parameters
+2)order of parameters
+3)type of parameters
+
+Ex:-
+Case1:
+class Test
+{
+public void m1()
+{
+System.out.println("no-args");
+}
+public void m1(int i)
+{
+System.out.println("int-args");
+}
+public void m2(double d)
+{
+System.out.println("double-args");
+}
+public static void main(String[] args)
+{
+Test t = new Test();
+t.m1();
+t.m1(10);
+t.m1(10.5);
+}
+}
+Overriding
+--------
+What ever the parent has by default available to the child class through inheritance, If the child
+class is not satisfied with the parent class implementation then the child is allowed to overwrite 
+that parent class method to provide it’s own specific implementation, this concept is nothing but 
+“overriding”.
+
+Ex:
+class P
+{
+public void property()
+{
+System.out.println("Land, gold, cash");
+}
+public void mary()
+{
+System.out.println("Subbalakshmi");
+}
+}
+class C extends P
+{
+public void mary()
+{
+System.out.println("Priyanka");
+}
+}
+class Test
+{
+public static void main(String[] args)
+{
+P p1 = new P();
+Case1: p1.mary(); //Subbalakshmi
+C c1 = new C();
+Case2: c1.mary(); //Priyanka
+P p2 = new C();
+Case3: p2.mary(); //Priyanka
+}
+}
+
+Rules for overriding
+1) The method names and arguments(including order) must be same. 
+i.e signatures of the methods must be same.
+
+Abstraction
+---------
+Hiding implementation details is nothing but abstraction. 
+The main advantages of abstraction are we can
+achieve security as we r not highlighting internal implementation.
+
+Enhancement will become easy. 
+With out effecting outside person we can change our internal
+implementation.
+
+It improves maintainability.
+Note:- 1) If we don’t know about implementation just we have to 
+represent the specification then we should go for interface
+2) If we don’t know about complete implementation just we have
+partial implementation then we should go for abstract.
+3) If we know complete implementation and if we r ready to
+provide service then we should go for concrete class
+
+Encapsulation
+-------------
+If a class follows data hiding and abstraction such type of class is said to be ‘Encapsulated’ class.
+Encapsulation = Data Hiding + Abstraction
+Ex:
+class Account
+{
+private int balance;
+public void setBalance(int balance)
+{
+//validating the user & his permissions.
+this.balance = balance;
+}
+public int getBalance()
+{
+//validating the user and his permissions.
+return balance;
+}
+}
+The data members we have to declared as private. So that outside person is not allowed to
+access to directly we have to provide Access to our data by defining setter and getter methods.
+i.e hiding data behind methods is the central concept of encapsulation.
+
+The main advantages of encapsulation are security, enhancement, maintainability.
+
+Data Hiding
+---------
+The data should not go out directly i.e outside person is not allowed to access the data this 
+is nothing but “Data Hiding”.
+The main advantage of data hiding is we can achieve security.
+By using private modifier we can achieve this.
+Ex:
+Class datademo
+{
+	private double amount;
+………
+}
+It is highly recommended to declare data members with private modifier.
+
+-> abstraction is more about design
+-> abstraction is a thought process
+-> to show what is neccessary
+
+
+->encaptulation is nothing but hiding the complexity
+->how can you hide internal process from the user
+	
+
+
+features of java(or)buzzwords of java
+----------------------------
+1)simple
+2)platformindependent
+3)architectural nutral
+4)portable
+5)muitithreded
+6)networked
+7)distributed
+8)highperformance
+9)robust
+10)secured
+11)dynamic
+12)oopl
+
+Static Variables, Static Block, Static Methods, Static Class
+---------------------------------------------
+static block
+
+prog
+----
+Exam1.java
+Main.java
+
+AccessModifiers
+-------------
+programs
+
+constants
+--------
+
+packages
+-------
+
+
+Package are categorized into two forms
+
+1)Built-in Package:-Existing Java package for example java.lang, java.util etc.
+2)User-defined-package:- Java package created by user to categorized classes and interface
+
+Creating a package
+--------------
+Creating a package in java is quite easy. Simply include a package command followed by name 
+of the package as the first statement in java source file.
+
+package mypack;
+public class employee 
+{
+ ...statement; 
+}
+
+->The above statement create a package called mypack.
+Java uses file system directory to store package. 
+->For example the .class for any classes you to define to be 
+part of mypack package must be stored in a directory called mypack
+
+Example of package creation
+----------------------
+package mypack
+class Book
+{
+ String bookname;
+ String author;
+ Book(String b, String c)
+ {
+  this.bookname = b;
+  this.author = c;
+ }
+ public void show()
+ {
+  System.out.println(bookname+" "+ author);
+ }
+}
+
+class test
+{
+ public static void main(String[] args)
+ {
+  Book bk = new Book("java","Herbert");
+  bk.show();
+ }
+}
+
+compilation for packages
+------------------
+c:>javac -d . Filename.java
+c:>java fullyqualified class name
+
+fullyqualfied class name=packagename.classname
+
+Uses of java package
+----------------
+->Package is a way to organize files in java, it is used when a project consists of multiple modules. It also helps resolve
+naming conflicts.
+->Package's access level also allows you to protect data from being used by the non-authorized classes.
+
+import keyword
+------------
+import keyword is used to import built-in and user-defined packages into your java source file.
+So that your class can refer to a class that is in another package by directly using its name.
+
+There are 3 different ways to refer to class that is present in different package
+------------------------------------------------------------
+1)Using fully qualified name (But this is not a good practice.)
+-------------------
+Example :
+
+class MyDate extends java.util.Date 
+{
+ //statement; 
+}
+import the only class you want to use.
+-----------------------------
+Example :
+
+import java.util.Date;
+class MyDate extends Date
+{
+ //statement.
+}
+import all the classes from the particular package
+-------------------------------------
+Example :
+import java.util.*; 
+class MyDate extends Date
+{
+//statement;
+}
+import statement is kept after the package statement.
+Example :
+
+package mypack;
+import java.util.*;
+But if you are not creating any package then import statement will be the first statement of your java source file.
+
+Static import
+----------
+static import is a feature that expands the capabilities of import keyword.
+It is used to import static member of a class. 
+We all know that static member are referred in association with its class name outside the class.
+Using static import, it is possible to refer to the static member directly without its class name. 
+There are two general form of static import statement.
+The first form of static import statement, import only a single static member of a class
+Syntax
+-----
+import static package.class-name.static-member-name;
+Example
+
+import static java.lang.Math.sqrt;   //importing static method sqrt of Math class
+The second form of static import statement,imports all the static member of a class
+Syntax
+
+import static package.class-type-name.*;
+Example
+
+import static java.lang.Math.*;	  //importing all static member of Math class
+Example without using static import
+
+public class Test
+{
+    public static void main(String[] args)
+    {
+        System.out.println(Math.sqrt(144));
+    }
+}
+Output
+
+12
+Example using static import
+
+import static java.lang.Math.*;
+public class Test
+{
+    public static void main(String[] args)
+    {
+        System.out.println(sqrt(144));
+    }
+}
+Output
+
+12
+
+ExceptionHandelling
+-------------------
+->ExceptionHandelling is one of the distinct 
+facility in java programming for developing
+strong applications
+
+
+->in any programming language ,if we write any program we get 3 types of errors they are
+
+a)compiletime errors
+c)runtime errors
+
+compiletime errors
+--------------------
+-compiletime errors are those which are occuring during 
+compiled time provided the programmer is 
+not fallowing the syntaxes of the language
+
+runtime errors
+---------------
+-runtime errors are those which are occuring at exicutiontime 
+oprovided the application user enters invalid input
+
+
+
+
+-the languages like c,c++,pascal,cobal etc.. and whose related applications are always considered as 
+week because these languages doesn't contain the facility called ExceptionHandelling
+
+handelling the exceptions
+-------------------------
+1)try
+2)catch
+3)finally
+4)throws
+5)throw
+
+
+
+->internal flow
+
+to print exception information
+-----------------------
+1)printStackTrace
+--------------
+->this mehods prints the exception n the fallowing format
+name of the Exception information in the fallowing format
+nameof the exception:discription 
+stacktrace---
+
+2)toString()
+---------
+->it prints exception informationin the fallowing format
+name of the exception:description
+
+3)getMessage()
+-----------
+->this method prints only description of the exception
+description:----
+
+
+various possible combinations of try-catch-finally
+-------------------------------------
+1)
+try
+{
+}
+catch(Exception e)
+{
+}
+--
+above combination right
+--
+2)
+try
+{
+}
+catch(child class exception)
+{
+}
+catch(parent class exception)
+{
+}
+--
+above combination right
+--
+3)
+try
+{
+}
+finally
+{
+}
+--
+above combination right
+--
+4)
+try
+{
+}
+compiletime error:try with out catch or finally
+5)
+catch(xx e)
+{
+}
+ce:catch without try
+6)
+finally
+{
+}
+ce:finally without try
+7)
+try
+{
+}
+sop("hello");
+catch(xx e)
+{
+}
+ce:try without catch or finally
+8)
+try
+{
+}
+catch(xx e)
+{
+}
+sop("hello");
+catch(xx e)
+{
+}
+ce:catch without try
+
+9)
+try
+{
+}
+catch(Exception e)
+{
+}
+sop("hello");
+finally
+{
+}
+ce:finally without try
+10)
+try
+{
+}
+catch(xx e)
+{
+}
+finally
+{
+}
+finally
+{
+}
+ce:finally without try
+11)
+try
+{
+}
+catch(ari e)
+{
+}
+catch(ari e)
+{
+}
+ce:ae has already cought
+12)
+try
+{
+}
+catch
+{
+	try
+	{
+	}
+	catch
+	{
+	}
+}
+13)
+try
+{
+}
+catch
+{
+}
+finally
+{
+	try
+	{
+	}
+	catch(cc c)
+	{
+	}
+}
+
+14)
+try
+{
+	try
+	{
+	}
+}
+catch(cc c)
+{
+}
+ce:try with out catch or finally
+15)
+try
+{
+}
+finally
+{
+}
+catch(cc c)
+{
+}
+ce:catch without try
+
+syntax of try,catch and finally
+-----------------
+try
+{
+	error statements;
+}
+catch(Exception e)
+{
+	//user friendly messages
+	//print exception information
+}
+finally
+{
+	//cleanup code
+}
+
+11-04-2014
+-----------
+
+throws
+------
+->in our program ,i there is any chance of raising checked exception compulsary we should
+handle it,otherwise we will get compiletime error says unreported exception must be cought
+or declare to be thrown
+
+ex:
+class Test
+{
+	p s vm(Sring[] args)
+	{
+		Thread.sleep(5000);
+	}
+}
+
+ce:: unreported exception java.lang.IE must be cought
+->we can handle this by using the fallowing two ways
+1)by using try-catch
+2)by using throws
+
+1)by using try-catch
+----------------
+class Test
+{
+	p.s.v.m(String args[])
+	{
+		try
+		{
+			Thread.sleep(5000);
+		}
+		catch(InteruptedException e)
+		{
+		}
+	}
+}
+
+2)by using throws keyword
+--------------------
+->we can use throws keyword to delegate the responsibulity 
+of exceptionhandelling to the caller method
+
+class Test
+{
+	public static void main(String[] args)throws IE
+	{
+		Thread.sleep(5000);
+	}
+}
+
+->hence the main purpose of throws keyword is to delegate
+responsibulity of ExceptionHandelling to the caller method in 
+the case of checkedexception,to convence compiler
+
+throw
+-----
+->sometimes we can create Exception object manually & hand-over
+that object to he jvm explicitly by using throw keyword
+	
+	throw new ArithmeticExcepion("/ by zero");
+
+->hence main purpose of throw keyword is to hand-over our created Exception object 
+manually to jvm
+
+
+
+
+
+ExceptionHandelling keywords summury
+------------------------------------
+1)try     ->to maintain Risky code
+2)catch  ->to maintain Exception handelling code
+3)finally  ->to maintain clean-up code
+4)throw  ->to hand-over created exception 
+              object to the jvm (or) caller manually
+5)throws ->to delegate responsibility
+
+
+
+
+
+
+
+
+
+top 10 exceptions
+--------------
+1)ArrayIndexOutOfBoundsException
+----------------------------
+->it is the chaild class of RuntimeException & hence it is unchecked 
+->raised automatically by the jvm ,whenever we are trying to access array element 
+with out of range index
+ex:
+int[] a=new int[10];
+sop(a[0]);//0
+if(100<a.length)
+sop(a[100]);//AIOOBE
+
+2)NullPointerException
+----------------------
+->it is the chaild class of RuntimeException and hence it is unchecked
+->raised automatically by the jvm ,whenever we are trying to perform
+any operation on null
+
+
+ex: String fn=null;
+	if(fn!=null)
+    fn.length();
+
+
+3)StackOverflowException
+--------------------
+->it is the chaild class of error and hence it is unchecked 
+->raised automatically by the jvm whenever we are trying to perform
+recursive method invocation
+
+
+ex:
+   m2()
+   {
+	m3();
+   }
+   m3()
+   {
+	m2();
+   }
+  
+   p s v main(String... args)
+   {
+	m2();
+   }
+
+4)NoClassDefFoundError
+----------------------
+->it is the chaild class of error and hence it is unchecked
+->raised automatically by the jvm ,when ever jvm unable to find
+required class
+
+5)ClassCastException
+--------------------
+->it is the child class of error and hence it is unchecked 
+->raised automatically by the jvm ,whenever we r trying to
+typecast parent object to chaild object
+
+Object o=new Objectt();
+String s=(String)o;
+
+RE:ClassCastException
+
+6)ExceptionIntializerError
+---------------------------
+->it is the chaild class of error and hence,it is unchecked 
+->raised automatically by the jvm,if any exception occurs while
+performing intializaion for static variables and while executing static blocks
+
+ex:
+class Test
+{
+	static int i=10/0;
+}
+
+RE:
+--
+ExceptionIntializerError
+caused by java.lang.AE:/ by zero
+
+ex2:
+class Test
+{
+	static
+	{
+		String s=null;
+		sop(s.length());
+	}
+}
+RE:
+--ExceptionInializerError
+caused by java.lang.NPE
+
+7)IllegalArgumentException
+---------------------
+->it is the chaild class of R.E & hence it is unchecked
+->raised explicitly by the programmer or by API developer
+to indicate that a method has been invoked with invalid argument
+
+ex:
+
+Thread t=new Thread();
+t.setPriority(10);  //right statement
+t.setPriority(100);//wrong
+
+RE:  IAE
+
+8)NumberFormatException
+---------------------
+->it is the chaild class of R.E & hence it is unchecked
+->raised explicitly by the programmer or by API developer
+to indicate that we are trying to convert String to number type
+but the string is not properly formatted
+
+int i=Integer.parseInt("hello");
+RE: NFE
+
+9)IllegalStateException
+-------------------
+->it is the chaild class of RuntimeException and hence ,it is unchecked 
+->raised explicitly by the programmer or by the api developer to indicate 
+that a method has been invoked at in apropriate time
+
+ex:
+once session expires we cant call any method on that object
+otherwise we will get IllegalStateException
+
+ex:
+HttpSession session=req.getSession();
+sop(session.getId());//12345..
+
+->above statements are correct
+
+session.invalidate();
+sop(session.getId());
+
+RE: ISE
+
+ex2:
+
+Thread t=new Thread();
+t.start();
+----
+---
+---
+t.start()
+
+RE:
+IllegalThreadStateException
+
+10)AssertionError
+--------------
+->it is the chaild class of error & hence it is unchecked 
+->raised explicitly either by the programmer or by the api developer
+to indicate that assert statement fails
+
+ex:
+assert(flase)
+
+RE: AssertionError
+
+
+Mulithreading(14-04-14)
+---------------------
+ -the basic aim of multithreading is to provide the concurrency
+ -a flow of control is known as thread
+ -every java program is known as multithreaded because every prog conatins multiple threads
+ -the languages like c,cpp,paskal,cobal are comes under single threaded modeling languages
+
+ ->foreground thread
+ ----------------
+ in every java program by default foreground thread is main thread with default priority value 5
+ex:main thread
+ 
+ ->background thread
+-----------------
+a background thread which is used to monitor the execution status of the foregroung thread.
+in every java program many number of backgroung threads are there among those one of the 
+background thread is GarbageCollector
+ex:gc
+
+ api of multithreading
+ ---------------
+ -java.lang.Thread(class)
+ -java.lang.Runnable(interface)
+
+ *)-in realtime we are using this multithreading concept in the case of servers development
+ex:like tomcat,weblgic,jboss etc..
+->lifecycle of a thread
+-----------------
+diagram
+->give some space for taking diagram
+
+-new state
+-ready state
+-running state
+-waiting state
+-dead stae(or)halted state
+
+new state
+-------
+a new state is one in which thread is created and it is about to enter into the main memeory
+
+ready state(or)runnable state
+----------------------
+in ready state thread is created and it is about to enter into the main memory 
+memoryspace is alloted for the thread and first time witing for the cpu
+
+halted state
+---------
+a haltedstate is one in which the thread is completed its exicution by the cpu
+
+the fallowing are the methods which causes a thread from running state to waiting state
+-----------------------------------------------------------------
+-suspending
+-sleep(milliseconds)
+-wait(ms)
+-wait()
+-join()
+
+Thread creation
+------------
+java.lang.Thread class
+java.lang.Runnable interface
+
+how to create the object for Thread class
+-------------------------------
+-by using new operator
+------------------
+Thread t=new Thread();
+
+-by using factory method
+-------------------
+Thread t=Thread.currentThread();
+
+profile of java.lang.Thread class
+------------------------
+datamembers
+----------
+1)public static final int MAX_PRIORITY=10
+2)public static final int NORM_PRIORITY=5
+3)public static final int MIN_PRIORITY=1
+
+constructors
+---------
+1)Thread()
+2)Thread(String s)
+3)Thread(Runnable r)
+4)Thread(Runnable r,String s)
+
+instance methods
+-------------
+1)public final setName(String s)
+2)public final String getName()
+3)public final void setPriority(int)
+4)public final in getPriority()
+5)public final boolean isAlive()
+6)public final void start()
+7)public void run()
+8)public final void suspend()
+9)public final void resume()
+10)public final void stop()
+11)public final void join() throws InterruptedException
+
+static method
+-----------
+1)public static final currenThread()
+2)public static final void sleep(long ms)throws  IE
+
+the fallowing is the program which shows the different outputs
+ ---------------------------------------------
+ program
+---------
+class MyThread extends Thread 
+{
+		public void run()
+		{
+			for(int i=0;i<5;i++)
+			{
+				System.out.println("i am from chaild thread");
+			}
+		}
+}
+class ThreadDemo
+{
+	public static void main(String[] args)
+	{
+		MyThread m=new MyThread();
+		m.start();
+		for(int i=0;i<5;i++)
+		{
+			System.out.println("i am from main thread");
+		}	
+	}
+}
+
+imp methods in threads
+-----------------
+1)yield()
+-------
+->yield() method causes to pause current executing thread for giving 
+the chance to remaining waiting threads of samepriority
+
+->if there are no waiting threads or all waiting threads have low priority
+then the same thread will continue its execution once again
+signature of yield method
+-------------------
+public static native void yield()
+
+2)join()
+-------
+->if a thread wants to wait untill completing some other thread 
+then we should go for join() method
+
+3)sleep()
+--------
+->if the thread dont want to perform any operation for a perticular amount of 
+time(just pausing) then we should go for sleep()
+
+->when ever we are using sleep method compulsary we should handle IneruptedExcepion
+otherwise we will get compileime error
+
+
+implement the thread concept by using Runnable interface
+--------------------------------------------
+->we can define a thread even by implementing Runnable interface also
+->Runnable interface is present in java.lang package &contains only one 
+method run() method
+
+ program
+---------
+class MyThread implements Runnable 
+{
+		public void run()
+		{
+			for(int i=0;i<5;i++)
+			{
+				System.out.println("i am from chaild thread");
+			}
+		}
+}
+class ThreadDemo
+{
+	public static void main(String[] args)
+	{
+		MyThread m=new MyThread();
+		Thread t=new Thread(r);
+		t.start();
+		for(int i=0;i<5;i++)
+		{
+			System.out.println("i am from main thread");
+		}	
+	}
+}
+
+best approch to define a thread
+-----------------------
+->among the 2 ways of defining a thread implements Runnable mechanism is recomonded to use
+->in the first approch our class extending thread class & hence there is no chance of extending any other class
+->but in the second approch we can extend some other class also while implementing runnable interface
+
+->(java docs)
+
+Synchronization
+------------
+->'synchronized' is the keyword applicable for the methods and blocks. 
+->We can't apply this keyword for variables and classes. 
+->If a method declared as synchronized at a time only one thread is allowed to execute
+that method on the given object. 
+->The main advantage of synchronized keyword is we can overcome data
+inconsistency problem. 
+->The main limitation of synchronized keyword is it may increases the waitingtime of the threads.
+->Hence if there is no specific requirement it's not recommended to use synchronized keyword.
+->Every object in java has a unique lock. When ever are using synchronized keyword then object level lock
+concept will come into picture.
+->If a thread want to execute any synchronized method on the object first it
+should require the lock of that object. Once a thread got the lock then it is allowed to execute any
+synchronized method on that object.
+->While a thread executing a synchronized method on the object, then the remaining threads are not allowed to
+execute any synchronized method on the same object. But the remaining threads are allowed to execute any
+non-synchronized method on the same object.
+
+thread synchronization techniques
+--------------------------
+in multithreading we have 2 types of synchronization techniques they are
+1)synchronized methods 
+--
+2)synchronized blocks
+-----------------
+->when ever the derived class is inheriding non-synchronized instance methods from any base interface(or)
+base class and if the inherided non-synchronized instance methods accessed by multiple threads then it generated 
+inconsistant results
+
+->to avoid these inconsistant results as a derived class programmer we are attempring to write 
+synchronized keyword before the inherided non-sunchronized instance method .
+->which is not possible because as a derived class programmer we can't change the
+prototype of either base interface methods or baseclass methods.so we are unable to 
+eliminate the inconsistant results with synchronized methods.
+
+->in this context to avoid inconsistant results we use another technique called Synchronized block
+
+syntax
+-----
+Sysnchronized(object of current class)
+{
+	block of dtatements;
+}
+
+//Account.java
+public interface Account
+{
+	void deposit(int amt);
+}
+//SAccount.java(implementation class)
+class SAccount implements Account
+{
+	public int bal=0;
+	public void deposit(int amt)
+	{
+		Sysnchronized(this)
+		{
+			bal=bal+amt;
+			S.o.p("curr bal is= "+bal);
+		}
+	}
+}
+
+
+itc(Inter Thread Communication)
+-------------------------
+1)producer-consumer problem
+------------------------
+->producer is one thread which will produce only one item at a time 
+what are all the items are produced by producer which are consumed
+by consumer thread.at anypoint of time no two consecutive items to be 
+produced by the producer thread
+
+->consumer is also one of the thread which will consume the items which are
+produced by the producer at any point of time no two consucutive items to be
+consumed by consumer
+
+diagram
+------
+
+
+
+
+Q.java
+-----
+class Q
+{
+	int n;
+	boolean valset=false;
+	synchronized void put(int i)
+	{
+		try
+		{
+			if(valset)
+			{
+				wait();
+			}
+		}catch(Exception e)
+		{
+			System.out.println("problrm in thread execution");
+		}
+		n=i;
+		System.out.println("put ="+n);
+		valset=true;
+		notify();
+	}
+	synchronized int get()
+	{
+		try
+		{
+			if(!valset)
+			{
+				wait();
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("problem in thread execution");
+		}
+		System.out.println("got ="+n);
+		valset=false;
+		notify();
+		return(n);
+	}
+}
+Producer Thread
+------------
+Prod.java
+-------
+class Prod implements Runnable
+{
+	Q q;
+	Prod(Q q)
+	{
+		this.q=q;
+		Thread t1=new Thread(this);
+		t1.start();
+	}
+	public void run()
+	{
+		int i=0;
+		while(true)
+		{
+			q.put(++i);
+		}
+	}
+}
+
+ConsumerThread
+-------------
+Cons.java
+--------
+class Cons implements Runnable
+{
+	Q q;
+	Cons(Q q)
+	{
+		this.q=q;
+		Thread t1=new Thread(this);
+		t1.start();
+	}
+	public void run()
+	{
+		while(true)
+		{
+			int x=q.get();
+		}
+	}
+}
+
+Main program
+------------
+
+MainDemo.java
+------------
+class MainDemo
+{
+	public static void main(String... a)
+	{
+		Q q=new Q();
+		Cons c=new Cons(q);
+		Prod p=new Prod(q);
+	}
+}
+
+
+
+
+Wrapper Classes
+--------------
+The main objectives of wrapper classes are:
+
+1) To Wrap primitives into object form. 
+So that we can handle primitives also just like objects.
+
+2) To Define several utility functions for the primitives
+(like converting primitive to the string form etc.)
+
+utility methods
+--------------
+1)valueOf()
+2)xxxValue()
+3)parseXxx()
+4)toString()
+
+
+Constructing Wrapper objects by using constructors
+
+Every Wrapper class contains 2 constructors one can take the corresponding primitive as the
+argument and the other can take the corresponding string as the argument.
+        Ex:
+                 Integer I = new Integer(10);
+                 Integer I = new Integer("10");
+
+Every Wrapper class including character class contains the following valueOf() method to
+convert primitive to wrapper object form.
+
+public static wrapper valueOf(primitive p);
+
+Ex:
+        Integer I = Integer.valueOf(10);
+        Character ch = Character.valueOf('a');
+        Boolean B = Boolean.valueOf(true);
+
+ 
+xxxValue() methods
+--------------
+Every wrapper class  contains
+the following xxxValue() methds
+for converting wrapperObject to primitive.
+
+public int intValue();
+public byte byteValue();
+public short shortValue();
+public long longValue();
+public float floatValue();
+public int doubleValue();
+public boolean booleanValue();
+public char charValue();
+Ex:
+Integer I = Integer.valueOf(130);
+int k=I.intValue();
+
+parseXxx() methods
+---------------
+Every wrapper class except character class contains 
+the following parseXxx() method for converting String 
+to primitive type
+
+public static primitive parseXxx(String s);
+
+Ex:
+      
+        Boolean b = Boolean.parseBoolean("true");
+
+toSting()methods
+-------------
+All wrapper Classes contains an instance method toString() for converting wrapper object to
+String type. This is overriding method of object class toString() method.
+        public String toString();
+Integer I = new Integer(10);
+String s = I.toString();
+System.out.println(s); 
+
+ 
+
+
+ 
