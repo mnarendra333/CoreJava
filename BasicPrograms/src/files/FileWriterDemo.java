@@ -11,12 +11,12 @@ public class FileWriterDemo {
 		FileWriter fw =null;
 		try {
 			fw = new FileWriter("test.txt",true);
-			/*fw.write("hello");
+			fw.write("hello");
 			fw.write("\n");
 			char ch[] = {'a','e','i','o','u'};
 			fw.write(ch);
 			fw.write("\n");
-			fw.write(100);*/
+			fw.write(100);
 			
 			fw.write("today is friday");
 			

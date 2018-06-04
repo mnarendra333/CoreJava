@@ -10,6 +10,7 @@ public class PrintWriterDemo {
 		try {
 			PrintWriter pw = new PrintWriter("names.txt");
 			pw.print(100);
+			pw.write(100);
 			pw.write("hello");
 			pw.write(new char[]{'a','e'});
 			

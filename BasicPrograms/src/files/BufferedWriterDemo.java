@@ -10,7 +10,7 @@ public class BufferedWriterDemo {
 		// TODO Auto-generated method stub
 		
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("sample.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("sample.txt",true));
 			
 			bw.write("hello");
 			bw.newLine();
